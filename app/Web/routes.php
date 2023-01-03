@@ -1,20 +1,18 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-
+$middlewares = [
+    'web.bootstrap'
+];
+if (class_exists(\Module\Member\Middleware\WebAuthMiddleware::class)) {
+    $middlewares[] = \Module\Member\Middleware\WebAuthMiddleware::class;
+}
 Route::group(
     [
+        'middleware' => $middlewares,
         'namespace' => '\App\Web\Controller',
-        'middleware' => [
-            'web.bootstrap',
-            \Module\Member\Middleware\WebAuthMiddleware::class,
-        ],
     ], function () {
 
     Route::match(['get', 'post'], '', 'IndexController@index');
-        Route::match(['get', 'post'], 'member/{id}', 'MemberController@show');
+    Route::match(['get', 'post'], 'member/{id}', 'MemberController@show');
     Route::match(['get', 'post'], 'member_profile', 'MemberProfileController@index');
 
 });
-
-
