@@ -1,48 +1,48 @@
-
 <p align="center">
   <a href="https://modstart.com">
     <img src="https://ms-assets.modstart.com/data/image/2021/09/08/23652_1f1j_9825.png" alt="ModStart" width="360" />
   </a>
 </p>
 <p align="center">
-  模块化的极速开发框架
+  基于 Laravel 的现代化个人博客系统
 </p>
 
+
 <p align="center">  
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
     <img alt="License Apache2.0" src="https://img.shields.io/badge/License-Apache2.0-blue">
   </a>
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
-    <img alt="GitHub last release" src="https://img.shields.io/github/v/release/modstart/ModStartCMS">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
+    <img alt="GitHub last release" src="https://img.shields.io/github/v/release/modstart/ModStartBlog">
   </a>
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/modstart/ModStartCMS">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/modstart/ModStartBlog">
   </a>
   <br />
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
     <img alt="Laravel" src="https://img.shields.io/badge/Framework-ModStart-blue">
   </a>
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
     <img alt="Laravel" src="https://img.shields.io/badge/PHP-5.6/7.0/8.x-red">
   </a>
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
     <img alt="Laravel" src="https://img.shields.io/badge/Laravel-5.1/9.0-red">
   </a>
-  <a href="https://github.com/modstart/ModStartCMS" target="_blank">
+  <a href="https://github.com/modstart/ModStartBlog" target="_blank">
     <img alt="Laravel" src="https://img.shields.io/badge/JS-Vue/ElementUI-green">
   </a>
 </p>
 
 
-# ModStart 是基于 Laravel 的模块化开发框架
-
-
+# 现代化个人博客系统
 
 
 ##  🔥 功能一览
 
-最新版本 <img alt="GitHub last release" style="vertical-align:middle;height:18px;" src="https://img.shields.io/github/v/release/modstart/ModStartCMS?style=flat-square">，功能完善，模块市场丰富，欢迎交流。
-QQ交流群： [467107293](https://qm.qq.com/cgi-bin/qm/qr?k=JP5GySRSCM8BUVoIGwfXF_bCe6gPajEb&jump_from=webapi)
+最新版本 <img alt="GitHub last release" style="vertical-align:middle;height:18px;" src="https://img.shields.io/github/v/release/modstart/ModStartBlog?style=flat-square">
+
+功能完善，模块市场丰富，欢迎交流。
+QQ群： [467107293](https://qm.qq.com/cgi-bin/qm/qr?k=JP5GySRSCM8BUVoIGwfXF_bCe6gPajEb&jump_from=webapi)
 
 - 会员模块通用且完整，支持完整的API调用
 - 大文件分片上传，进度条显示，已上传文件管理
@@ -50,8 +50,8 @@ QQ交流群： [467107293](https://qm.qq.com/cgi-bin/qm/qr?k=JP5GySRSCM8BUVoIGwf
 - 完善的开发助手，实现模块、主题的的一键创建
 - 完善的后台权限管理，支持基于RBAC的权限管理系统
 - 后台管理支持使用手机、平板、PC，无论何时何地都可方便管理
-- 第三方登录（QQ、微信、微博、支付宝、微信小程序）
-- 第三方支付支持（微信、支付宝、支付宝当面付、微信扫码、微信小程序）
+- 第三方登录（QQ、微信、微博、支付宝、微信小程序、微信公众号关注登录）
+- 第三方支付支持（微信、支付宝、支付宝当面付、微信扫码、微信小程序、用户余额支付）
 - 第三方云存储支持，支持云储存分片上传（阿里云、百度云、华为云、腾讯云、FTP、七牛云、UCloud、又拍云）
 - 第三方短信支持（阿里云、腾讯云、华为云、百度云、253云通讯、聚合、七牛云、融云、赛邮、UCloud、云片、网易云）
 - 丰富优秀的模块支持：
@@ -82,23 +82,22 @@ QQ交流群： [467107293](https://qm.qq.com/cgi-bin/qm/qr?k=JP5GySRSCM8BUVoIGwf
   - [在线客服系统](https://modstart.com/m/LiveChat)
   - [图床系统](https://modstart.com/m/PicUploader)
   - [通用CMS系统](https://modstart.com/m/Cms)
-
+  - ...
 
 
 ##  💡 系统简介
 
-`ModStart` 是一个基于 `Laravel` 模块化极速开发框架。模块市场拥有丰富的功能应用，支持后台一键快速安装，让开发者能快的实现业务功能开发。 
+`ModStartBlog` 是一个基于 `Laravel` 现代化个人博客系统。模块市场拥有丰富的功能应用，支持后台一键快速安装，让开发者能快的实现业务功能开发。 
 
 系统完全开源，基于 **Apache 2.0** 开源协议，**免费且不限制商业使用**。
 
-
 <img src="https://ms-assets.modstart.com/data/image/2021/11/07/46017_dv5r_7358.jpg" alt="功能架构" />
 
-- [官方网站](https://modstart.com)
-- [在线演示](https://cms.demo.tecmz.com)
+- [ModStart官方网站](https://modstart.com)
+- [ModStartBlog在线演示](https://blog.demo.tecmz.com)
 - [模块市场](https://modstart.com/store)
-- [源码地址 / Gitee](https://gitee.com/modstart/ModStartCMS)
-- [源码地址 / GitHub](https://github.com/modstart/ModStartCMS)
+- [源码地址 / Gitee](https://gitee.com/modstart/ModStartBlog)
+- [源码地址 / GitHub](https://github.com/modstart/ModStartBlog)
 
 **技术栈**
 
@@ -108,30 +107,27 @@ QQ交流群： [467107293](https://qm.qq.com/cgi-bin/qm/qr?k=JP5GySRSCM8BUVoIGwf
 - [jQuery](http://jquery.com)
 
 
-
 ##  💥 系统特性
 
-- 简洁优雅、灵活可扩展
-- 后台RBAC权限管理
-- 模块化开发，积木式搭建系统
-- 组件按需加载静态资源
-- 丰富的数据表格、数据表单功能
-- 内置文件上传，无需繁琐的开发
+- 全模块化开发，积木式搭建系统，可灵活组合
+- 简洁优雅、灵活可扩展，可实现大型复杂系统
+- 后台RBAC权限管理，多管理员多角色管理
+- 丰富的数据表格、数据表单、数据详情功能
+- 内置文件上传，无需繁琐的开发，支持云存储
 - 丰富的模块市场，后台一键快速安装
-
 
 
 ## 🎨 系统演示
 
 ### 前台演示地址
 
-[http://cms.demo.tecmz.com/](http://cms.demo.tecmz.com/)
+[http://blog.demo.tecmz.com/](http://blog.demo.tecmz.com/)
 
 > 用户密码自行注册使用
 
 ### 后台演示地址
 
-[http://cms.demo.tecmz.com/admin](http://cms.demo.tecmz.com/admin)
+[http://blog.demo.tecmz.com/admin](http://blog.demo.tecmz.com/admin)
 
 > 账号：`demo` 密码：`123456` （演示账号为只读权限）
 
