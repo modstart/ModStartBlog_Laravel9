@@ -757,6 +757,13 @@
 }
 
 @media screen and (min-width: 40rem) {
+
+    [data-header-sticky-disable] {
+        .ub-header-b, .ub-header {
+            top: -3rem !important;
+        }
+    }
+
     .ub-header-b, .ub-header {
         position: sticky;
         transition: top 0.3s;
@@ -1385,6 +1392,7 @@
             .back {
                 font-size: 1.6rem;
                 width: 50px;
+                line-height: 50px;
                 text-align: center;
                 min-width: 50px;
                 flex-shrink: 0;
