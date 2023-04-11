@@ -102,8 +102,8 @@ a.ub-text {
     max-width: var(--container-width, 57rem);
     margin-left: auto;
     margin-right: auto;
-    padding-left: var(--size-margin-1-2);
-    padding-right: var(--size-margin-1-2);
+    padding-left: calc( var(--size-margin) / 2 );
+    padding-right: calc( var(--size-margin) / 2 );
 
     &.narrow {
         max-width: 30rem;
@@ -115,9 +115,6 @@ a.ub-text {
     max-width: 30rem;
     box-shadow: 0 0 5px #CCC;
 }
-
-
-
 
 
 .ub-color-a {
@@ -250,7 +247,6 @@ a.ub-text {
 }
 
 
-
 .ub-bg-primary {
     background-color: var(--color-primary) !important;
 }
@@ -258,9 +254,6 @@ a.ub-text {
 .ub-bg-white {
     background-color: #FFF !important;
 }
-
-
-
 
 
 .ub-bg-a {
@@ -487,10 +480,24 @@ a.ub-text {
 
 .ub-content-bg {
     background-color: var(--color-content-bg);
+}
 
-    &.h-full {
-        min-height: 100vh;
-    }
+.ub-content-box{
+    background-color: var(--color-content-bg);
+    border-radius: var(--size-radius);
+    padding: var(--size-padding);
+}
+
+.ub-border-bottom {
+    border-bottom: 1px solid var(--color-body-line);
+}
+
+.ub-border-top {
+    border-top: 1px solid var(--color-body-line);
+}
+
+.ub-h-full {
+    min-height: 100vh;
 }
 
 @media (max-width: 40rem) {
@@ -508,7 +515,9 @@ a.ub-text {
 }
 
 
-html.body-scroll-lock {
+.body-scroll-lock {
+    overflow: hidden;
+
     body {
         overflow: hidden;
     }
