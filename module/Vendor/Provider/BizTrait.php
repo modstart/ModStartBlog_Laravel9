@@ -42,9 +42,21 @@ trait BizTrait
         return null;
     }
 
+    
     public static function allMap()
     {
         return array_build(self::listAll(), function ($k, $v) {
+            return [
+                $v->name(), $v->title()
+            ];
+        });
+    }
+
+    public static function allMapEnabled()
+    {
+        return array_build(array_filter(self::listAll(), function ($v) {
+            return $v->enable();
+        }), function ($k, $v) {
             return [
                 $v->name(), $v->title()
             ];
