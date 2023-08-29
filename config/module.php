@@ -24,9 +24,6 @@ return [
         ],
         'Partner' => [
             'enable' => true,
-            'config' => [
-                'position' => '[{"k":"home","v":"首页"}]',
-            ],
         ],
         'VisitStatistic' => [
             'enable' => true,
