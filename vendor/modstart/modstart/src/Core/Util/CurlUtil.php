@@ -247,7 +247,7 @@ class CurlUtil
         $package = $option;
         $package['url'] = $url;
         $package['param'] = $param;
-        $url = "$proxy?package=" . urlencode(base64_encode(json_encode($package)));
+        $url = "$proxy?package=" . urlencode(base64_encode(SerializeUtil::jsonEncode($package)));
         $content = self::getRaw($url);
         $content = @base64_decode($content);
         $content = @unserialize($content);
@@ -256,7 +256,7 @@ class CurlUtil
 
     public static function proxyCommon($proxy, $package)
     {
-        $url = "$proxy?package=" . urlencode(base64_encode(json_encode($package)));
+        $url = "$proxy?package=" . urlencode(base64_encode(SerializeUtil::jsonEncode($package)));
         $content = self::getRaw($url);
         $content = @base64_decode($content);
         $content = @unserialize($content);
@@ -340,7 +340,11 @@ class CurlUtil
             curl_setopt($ch, CURLOPT_USERAGENT, $option['userAgent']);
         }
         $temp = curl_exec($ch);
+        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+        if (200 != $statusCode) {
+            return null;
+        }
         return $temp;
     }
 

@@ -18,6 +18,7 @@ use ModStart\Core\Input\Response;
 use ModStart\Core\Type\SortDirection;
 use ModStart\Core\Util\CRUDUtil;
 use ModStart\Core\Util\IdUtil;
+use ModStart\Core\Util\SerializeUtil;
 use ModStart\Detail\Detail;
 use ModStart\Field\AbstractField;
 use ModStart\Field\AutoRenderedFieldValue;
@@ -194,6 +195,7 @@ class Form implements Renderable
      */
     private $itemId = null;
     /**
+     * 表单编辑、删除的记录，该数组值都为已序列化的字符串
      * @var Model|stdClass
      */
     private $item;
@@ -357,7 +359,7 @@ class Form implements Renderable
                         $failedValidators[] = $validator;
                     }
                 } catch (\Exception $e) {
-                    BizException::throws('Form.fieldValidateMessages.Error - ' . json_encode($validator->getRules(), JSON_UNESCAPED_UNICODE));
+                    BizException::throws('Form.fieldValidateMessages.Error - ' . SerializeUtil::jsonEncode($validator->getRules()));
                 }
             }
         }
