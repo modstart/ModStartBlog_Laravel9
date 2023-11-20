@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '57b772106693e78c55c65b6113d460ab1502f06a',
+        'reference' => 'c2d15e5ad9a223ea5bd812f076698262bfe26632',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -451,7 +451,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '57b772106693e78c55c65b6113d460ab1502f06a',
+            'reference' => 'c2d15e5ad9a223ea5bd812f076698262bfe26632',
             'dev_requirement' => false,
         ),
         'laravel/sanctum' => array(
@@ -517,6 +517,15 @@
             'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
             'dev_requirement' => false,
         ),
+        'maatwebsite/excel' => array(
+            'pretty_version' => 'v1.1.5',
+            'version' => '1.1.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../maatwebsite/excel',
+            'aliases' => array(),
+            'reference' => '0c67aba8387726458d42461eae91a3415593bbc4',
+            'dev_requirement' => false,
+        ),
         'mobiledetect/mobiledetectlib' => array(
             'pretty_version' => '2.8.37',
             'version' => '2.8.37.0',
@@ -541,7 +550,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../modstart/modstart-laravel9',
             'aliases' => array(),
-            'reference' => '9ca3ae3c493eacaf245513a48709f556e239a1fc',
+            'reference' => '775c24ec1e1c50f7cfc80282c785d534b4279c4d',
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(
@@ -611,6 +620,15 @@
             'install_path' => __DIR__ . '/../overtrue/socialite',
             'aliases' => array(),
             'reference' => '9d71cbd56dcb6c97da41d3483b198d853434a63c',
+            'dev_requirement' => false,
+        ),
+        'phpoffice/phpexcel' => array(
+            'pretty_version' => '1.8.1',
+            'version' => '1.8.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpoffice/phpexcel',
+            'aliases' => array(),
+            'reference' => '372c7cbb695a6f6f1e62649381aeaa37e7e70b32',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
@@ -742,8 +760,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(

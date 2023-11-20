@@ -12,9 +12,14 @@ class PageHtmlUtil
         $html = [];
         for ($i = $start; $i <= $end; $i++) {
             if ($i == $currentPage) {
-                $html[] = sprintf($template['current'], $i);
+                $html[] = self::replace($template['current'], [
+                    '%p%' => $i
+                ]);
             } else {
-                $html[] = sprintf($template['item'], str_replace('{page}', $i, $url), $i);
+                $html[] = self::replace($template['item'], [
+                    '%p%' => $i,
+                    '%s%' => self::buildPage($url, $i)
+                ]);
             }
         }
         return join('', $html);
@@ -31,7 +36,7 @@ class PageHtmlUtil
     {
         $totalPage = ceil($total / $pageSize);
         if ($currentPage < $totalPage) {
-            return str_replace('{page}', ($currentPage + 1), $url);
+            return self::buildPage($url, $currentPage + 1);
         }
         return null;
     }
@@ -46,9 +51,19 @@ class PageHtmlUtil
     public static function prevPageUrl($total, $pageSize, $currentPage, $url = '/url/for/path?page={page}')
     {
         if ($currentPage > 1) {
-            return str_replace('{page}', ($currentPage - 1), $url);
+            return self::buildPage($url, $currentPage - 1);
         }
         return null;
+    }
+
+    private static function replace($tpl, $param = [])
+    {
+        return str_replace(array_keys($param), array_values($param), $tpl);
+    }
+
+    private static function buildPage($url, $page)
+    {
+        return str_replace('{page}', $page, $url);
     }
 
     /**
@@ -63,14 +78,14 @@ class PageHtmlUtil
     {
         if (is_null($template)) {
             $template = [
-                'warp' => '<div class="pages">%s</div>',
+                'warp' => '<div class="pages">%s%</div>',
                 'more' => '<span class="more">...</span>',
-                'prev' => '<a class="page" href="%s">' . L('PrevPage') . '</a>',
+                'prev' => '<a class="page" href="%s%">' . L('PrevPage') . '</a>',
                 'prevDisabled' => null,
-                'next' => '<a class="page" href="%s">' . L('NextPage') . '</a>',
+                'next' => '<a class="page" href="%s%">' . L('NextPage') . '</a>',
                 'nextDisabled' => null,
-                'current' => '<span class="current">%d</span>',
-                'item' => '<a class="page" href="%s">%d</a>',
+                'current' => '<span class="current">%p%</span>',
+                'item' => '<a class="page" href="%s%">%p%</a>',
             ];
         }
 
@@ -84,8 +99,17 @@ class PageHtmlUtil
 
         $html = [];
 
+        if (!empty($template['first'])) {
+            $html[] = self::replace($template['first'], [
+                '%s%' => self::buildPage($url, 1),
+            ]);
+        }
+
         if ($currentPage > 1) {
-            $html[] = sprintf($template['prev'], str_replace('{page}', ($currentPage - 1), $url));
+            $html[] = self::replace($template['prev'], [
+                '%s%' => self::buildPage($url, $currentPage - 1),
+                '%p%' => $currentPage - 1,
+            ]);
         } else {
             if (!empty($template['prevDisabled'])) {
                 $html[] = $template['prevDisabled'];
@@ -122,13 +146,23 @@ class PageHtmlUtil
         }
 
         if ($currentPage < $totalPage) {
-            $html[] = sprintf($template['next'], str_replace('{page}', ($currentPage + 1), $url));
+            $html[] = self::replace($template['next'], [
+                '%s%' => self::buildPage($url, $currentPage + 1),
+            ]);
         } else {
             if (!empty($template['nextDisabled'])) {
                 $html[] = $template['nextDisabled'];
             }
         }
 
-        return sprintf($template['warp'], join('', $html));
+        if (!empty($template['last'])) {
+            $html[] = self::replace($template['last'], [
+                '%s%' => self::buildPage($url, $totalPage),
+            ]);
+        }
+
+        return self::replace($template['warp'], [
+            '%s%' => join('', $html),
+        ]);
     }
 }
