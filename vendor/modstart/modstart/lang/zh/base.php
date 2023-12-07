@@ -198,7 +198,6 @@ return [
     'No Permission' => '没有权限',
     'Edit File' => '编辑文件',
     'View File' => '查看文件',
-    'Reverse Select Order' => '反转选择顺序',
     'Expand All' => '展开全部',
     'Phone' => '手机',
     'Email' => '邮箱',
@@ -234,4 +233,8 @@ return [
     'Under Development' => '开发中',
     'Price' => '价格',
     '%s is default, please change it' => '%s 为默认值，请修改',
+    'Move Up' => '上移',
+    'Move Down' => '下移',
+    'Move Top' => '置顶',
+    'Move Bottom' => '置底',
 ];
