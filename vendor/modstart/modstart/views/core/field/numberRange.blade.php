@@ -8,13 +8,12 @@
     </div>
     <div class="field">
         <div id="{{$id}}Input">
-            <input type="hidden"
-                   {{$readonly?'readonly':''}}
-                   class="form"
-                   name="{{$name}}"
-                   placeholder="{{$placeholder}}"
-                   :value="value"/>
-            <icon-input v-model="value" :icons="icons" :inline="true"></icon-input>
+            <input type="hidden" name="{{$name}}" :value="jsonValue" />
+            <div>
+                <el-input type="number" style="width:4rem;" placeholder="最小值" size="mini" v-model="value['min']"></el-input>
+                -
+                <el-input type="number" style="width:4rem;" placeholder="最大值" size="mini" v-model="value['max']"></el-input>
+            </div>
         </div>
         @if(!empty($help))
             <div class="help">{!! $help !!}</div>
@@ -25,26 +24,20 @@
     {{ \ModStart\ModStart::js('asset/vendor/vue.js') }}
     {{ \ModStart\ModStart::js('asset/vendor/element-ui/index.js') }}
     {{ \ModStart\ModStart::css('asset/vendor/element-ui/index.css') }}
-    {{ \ModStart\ModStart::js('asset/entry/basic.js') }}
     $(function () {
-        var app = new window.__vueManager.Vue({
+        var app = new Vue({
             el: '#{{$id}}Input',
-            data: {
-                value: {!! \ModStart\Core\Util\SerializeUtil::jsonEncode(null===$value?$defaultValue:$value) !!},
-                icons: [],
+            data: function(){
+                return {
+                    value: {!! \ModStart\Core\Util\SerializeUtil::jsonEncode(null===$value?(null===$defaultValue?['min'=>'','max'=>'']:$defaultValue):$value) !!}
+                };
             },
             computed:{
                 jsonValue:function(){
                     return JSON.stringify(this.value);
                 }
-            },
-            mounted(){
-                this.$api.post('{{$server}}', {}, res => {
-                    this.icons = res.data
-                })
-            },
-            methods:{
             }
         });
+        $('#{{$id}}').data('app',app);
     });
 </script>
