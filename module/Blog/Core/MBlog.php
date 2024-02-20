@@ -245,13 +245,54 @@ class MBlog
     }
 
     /**
-     * @Util 最新评论
+     * @Util 最新博客评论
      * @param $limit int 限制条数
      * @return array
+     * @returnExample
+     * [
+     *   {
+     *     "id": 1, // 评论ID
+     *     "created_at": "2022-09-21 14:59:09", // 创建时间
+     *     "blog": {
+     *       "id": 19,          // 博客ID
+     *       "title": "博客标题",
+     *       "_url": "/blog/15"  // 博客URL
+     *     }
+     *   },
+     *   // ...
+     * ]
      */
     public static function latestComment($limit)
     {
         return \Module\Blog\Util\BlogCommentUtil::latest($limit);
+    }
+
+    /**
+     * @Util 最新留言内容
+     * @param $limit int 限制条数
+     * @return array
+     * @returnExample
+     * [
+     *   {
+     *     "id": 5650,
+     *     "created_at": "2022-05-28 11:06:23",
+     *     "updated_at": "2022-05-28 11:06:28",
+     *     "reply": null,
+     *     "username": "我心飞扬",
+     *     "email": "",
+     *     "url": "",
+     *     "content": "<p>或许对于世界，你是一个人；但对于我，你就是全世界。你在时，你是一切，你不在时，一切是你。</p>",
+     *     "upCount": null,
+     *     "downCount": null,
+     *     "memberUserId": 0,
+     *     "status": 2
+     *   },
+     *   // ...
+     * }
+     */
+    public static function latestMessage($limit)
+    {
+        return \Module\Blog\Util\BlogMessageUtil::latest($limit);
     }
 
 
@@ -530,6 +571,32 @@ class MBlog
     public static function getCategory($categoryId)
     {
         return BlogCategoryUtil::get($categoryId);
+    }
+
+    /**
+     * @Util 获取子分类信息
+     * @param $parentCategoryId int 分类ID
+     * @return array 数组
+     * @returnExample
+     * [
+     *   {
+     *     "id": 1, // 分类ID
+     *     "created_at": "2022-05-27 14:51:09",
+     *     "updated_at": "2022-09-21 14:55:33",
+     *     "pid": 0,
+     *     "sort": 1,
+     *     "title": "分类名称",
+     *     "blogCount": 1,
+     *     "cover": "https://example.com/xxx.jpg",
+     *     "keywords": "分类关键词",
+     *     "description": "分类描述"
+     *   },
+     *   // ...
+     * ]
+     */
+    public static function listChildCategories($parentCategoryId)
+    {
+        return BlogCategoryUtil::listChildCategories($parentCategoryId);
     }
 
     /**
