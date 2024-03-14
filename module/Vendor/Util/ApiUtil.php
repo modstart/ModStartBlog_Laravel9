@@ -45,10 +45,16 @@ class ApiUtil
         ];
         $uploads = config('data.upload');
         foreach ($uploads as $category => $categoryInfo) {
-            $data['dataUpload']['category'][$category] = [
+            $info = [
                 'maxSize' => $categoryInfo['maxSize'],
                 'extensions' => $categoryInfo['extensions'],
             ];
+            if ('image' == $category) {
+                $info['compress'] = isset($categoryInfo['compress']) ? $categoryInfo['compress'] : true;
+                $info['compressMaxWidthOrHeight'] = isset($categoryInfo['compressMaxWidthOrHeight']) ? $categoryInfo['compressMaxWidthOrHeight'] : 4000;
+                $info['compressMaxSize'] = isset($categoryInfo['compressMaxSize']) ? $categoryInfo['compressMaxSize'] : 10 * 1024 * 1024;
+            }
+            $data['dataUpload']['category'][$category] = $info;
         }
 
         return $data;
