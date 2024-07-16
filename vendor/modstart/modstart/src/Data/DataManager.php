@@ -143,19 +143,19 @@ class DataManager
         if ($file['size'] > $config['maxSize']) {
             return Response::generate(-5, L('File Size Limit %s', FileUtil::formatByte($config['maxSize'])));
         }
-        if ('init' == $action) {
-            return $storage->multiPartInit([
-                'category' => $category,
-                'file' => $file,
-                'param' => $param,
-            ]);
-        }
-        return $storage->multiPartUpload([
+        $callParam = [
             'category' => $category,
             'file' => $file,
-            'input' => $input,
             'param' => $param,
-        ]);
+        ];
+        if ('uploadEnd' == $action) {
+            return $storage->multiPartUploadEnd($callParam);
+        }
+        if ('init' == $action) {
+            return $storage->multiPartInit($callParam);
+        }
+        $callParam['input'] = $input;
+        return $storage->multiPartUpload($callParam);
     }
 
     /**
@@ -412,6 +412,30 @@ class DataManager
         }
         $storage->repository()->deleteDataById($data['id']);
         DataDeletedEvent::fire($data);
+    }
+
+    /**
+     * 根据路径查找数据
+     *
+     * @param $path
+     * @param null $option
+     * @throws \Exception
+     */
+    public static function getByPath($path, $option = null)
+    {
+        if (null === $option) {
+            $option = self::getConfigOption();
+        }
+        $option = self::prepareOption($option);
+        $storage = self::storage($option);
+        $data = $storage->repository()->getDataByPath($path);
+        if (empty($data)) {
+            return Response::generateError('Data Not Found');
+        }
+        $path = AbstractDataStorage::DATA . '/' . $data['category'] . '/' . $data['path'];
+        return Response::generateSuccessData([
+            'path' => $path,
+        ]);
     }
 
     /**
