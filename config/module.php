@@ -34,5 +34,8 @@ return [
         'Banner' => [
             'enable' => true,
         ],
+        'AigcBase' => [
+            'enable' => true,
+        ],
     ],
 ];
