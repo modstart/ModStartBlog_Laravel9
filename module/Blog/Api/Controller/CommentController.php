@@ -10,9 +10,13 @@ use ModStart\Core\Exception\BizException;
 use ModStart\Core\Input\InputPackage;
 use ModStart\Core\Input\Response;
 use ModStart\Core\Util\HtmlUtil;
+use Module\Blog\Core\BlogCommentContentVerifyBiz;
+use Module\Blog\Model\Blog;
+use Module\Blog\Model\BlogComment;
 use Module\Blog\Type\BlogCommentStatus;
 use Module\Member\Auth\MemberUser;
 use Module\Vendor\Provider\Captcha\CaptchaProvider;
+use Module\Vendor\Provider\ContentVerify\ContentVerifyJob;
 
 /**
  * @Api 博客系统
@@ -53,9 +57,18 @@ class CommentController extends Controller
         } else {
             $data['memberUserId'] = 0;
         }
-        $data['status'] = BlogCommentStatus::WAIT_VERIFY;
-        ModelUtil::insert('blog_comment', $data);
-        ModelUtil::update('blog', $blogId, [
+        if (modstart_config('Blog_CommentVerifyEnable', false)) {
+            $data['status'] = BlogCommentStatus::WAIT_VERIFY;
+        } else {
+            $data['status'] = BlogCommentStatus::VERIFY_SUCCESS;
+        }
+        $data = ModelUtil::insert(BlogComment::class, $data);
+        if ($data['status'] == BlogCommentStatus::WAIT_VERIFY) {
+            ContentVerifyJob::create(BlogCommentContentVerifyBiz::NAME, [
+                'id' => $data['id'],
+            ], $data['content']);
+        }
+        ModelUtil::update(Blog::class, $blogId, [
             'commentCount' => ModelUtil::count('blog_comment', [
                 'blogId' => $blogId,
                 'status' => BlogCommentStatus::VERIFY_SUCCESS,
